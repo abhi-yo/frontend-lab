@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { CSSProperties, ReactNode, useMemo, useState } from "react";
+import { CSSProperties, ReactNode, useMemo, useState, useRef } from "react";
 import ThemeToggle from "../components/theme-toggle";
+import FullscreenButton from "../components/fullscreen-button";
 import ShaderCanvas, { type ShaderUniforms } from "../components/shader-canvas";
 
 function sliderStyle(value: number, min: number, max: number): CSSProperties {
@@ -31,6 +32,7 @@ function Control({
 }
 
 export default function ShaderPage() {
+  const previewRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
 
   const [speed, setSpeed] = useState(0.8);
@@ -139,8 +141,9 @@ export default function ShaderPage() {
             <span className="preview-badge">Live Preview</span>
             <span>{colors.length} colors</span>
           </div>
-          <div className="preview-viewport">
+          <div ref={previewRef} className="preview-viewport">
             <ShaderCanvas uniforms={uniforms} />
+            <FullscreenButton targetRef={previewRef} />
           </div>
         </div>
 
