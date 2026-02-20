@@ -12,70 +12,10 @@ type Tool = {
   thumb: ReactNode;
 };
 
-const SVG_THUMB_FROM_PATH = "M 0,130 L 15,144.2 L 30,157.7 L 45,169.8 L 60,180 L 75,187.8 L 90,192.9 L 105,194.9 L 120,193.5 L 135,188.9 L 150,181.1 L 165,170.6 L 180,157.8 L 195,143.4 L 210,128 L 225,112.5 L 240,97.5 L 255,84.1 L 270,73 L 285,64.8 L 300,60.1 L 315,59.1 L 330,61.9 L 345,68.4 L 360,78.1 L 375,90.5 L 390,105 L 405,120.8 L 420,137.1 L 435,153.2 L 450,168.2 L 465,181.5 L 480,192.3 L 495,199.9 L 510,203.9 L 525,204 L 540,200.1 L 555,192.4 L 570,181.6 L 585,168.4 L 600,153.8 L 615,138.6 L 630,123.7 L 645,109.8 L 660,97.9 L 675,88.5 L 690,82.3 L 705,79.5 L 720,80.2 L 735,84.5 L 750,92.1 L 765,102.6 L 780,115.4 L 795,130 L 810,145.4 L 825,160.8 L 840,175.4 L 855,188.6 L 870,199.4 L 885,207.1 L 900,211";
-const SVG_THUMB_TO_PATH = "M 0,130 L 15,145.2 L 30,159.4 L 45,171.7 L 60,181.3 L 75,187.6 L 90,190.2 L 105,188.9 L 120,183.8 L 135,175.4 L 150,164.2 L 165,151 L 180,136.8 L 195,122.5 L 210,109.2 L 225,97.8 L 240,89 L 255,83.4 L 270,81.3 L 285,83 L 300,88.4 L 315,97.3 L 330,109.3 L 345,123.8 L 360,140 L 375,157 L 390,173.8 L 405,189.3 L 420,202.6 L 435,213 L 450,219.9 L 465,223 L 480,222.1 L 495,217.4 L 510,209.4 L 525,198.8 L 540,186.5 L 555,173.5 L 570,160.7 L 585,149.1 L 600,139.5 L 615,132.6 L 630,129 L 645,129 L 660,132.6 L 675,139.5 L 690,149.1 L 705,160.7 L 720,173.5 L 735,186.5 L 750,198.8 L 765,209.4 L 780,217.4 L 795,222.1 L 810,223 L 825,219.9 L 840,213 L 855,202.6 L 870,189.3 L 885,173.8 L 900,157";
 const tools: Tool[] = [
+  // ── Color ──────────────────────────────────────────
   {
     label: "01",
-    title: "Shader Studio",
-    desc: "WebGL silk shader with domain warping, fold simulation, and Phong lighting.",
-    href: "/shader",
-    thumb: (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          background:
-            "radial-gradient(ellipse at 30% 20%, rgba(200,200,200,0.35), transparent 55%), radial-gradient(ellipse at 75% 75%, rgba(180,180,180,0.25), transparent 50%), radial-gradient(ellipse at 50% 50%, #4a4a4a, #1a1a1a)",
-          backgroundBlendMode: "screen, screen, normal",
-          animation: "pulseField 12s linear infinite",
-        }}
-      />
-    ),
-  },
-  {
-    label: "02",
-    title: "SVG Motion Forge",
-    desc: "Design looping waveforms with controllable amplitude, frequency, stroke, and duration.",
-    href: "/svg",
-    thumb: (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "grid",
-          placeItems: "center",
-          background: "var(--svg-preview-bg)",
-        }}
-      >
-        <svg viewBox="0 0 900 260" fill="none" style={{ width: "100%", height: "80%" }}>
-          <defs>
-            <linearGradient id="wg-home" x1="0" y1="0" x2="900" y2="0">
-              <stop offset="0%" stopColor="#302F2C" />
-              <stop offset="50%" stopColor="#868580" />
-              <stop offset="100%" stopColor="#EFEDE3" />
-            </linearGradient>
-          </defs>
-          <path
-            d={SVG_THUMB_FROM_PATH}
-            stroke="url(#wg-home)"
-            strokeWidth="4"
-            strokeLinecap="round"
-            fill="none"
-          >
-            <animate
-              attributeName="d"
-              dur="6s"
-              repeatCount="indefinite"
-              values={`${SVG_THUMB_FROM_PATH};${SVG_THUMB_TO_PATH};${SVG_THUMB_FROM_PATH}`}
-            />
-          </path>
-        </svg>
-      </div>
-    ),
-  },
-  {
-    label: "03",
     title: "Gradient Architect",
     desc: "Compose layered gradients, tune color stops, and export polished surfaces for production UIs.",
     href: "/gradient",
@@ -84,10 +24,416 @@ const tools: Tool[] = [
         style={{
           width: "100%",
           height: "100%",
-          background:
-            "radial-gradient(circle at 10% 20%, rgba(255,255,255,0.34), transparent 42%), radial-gradient(circle at 80% 78%, rgba(0,0,0,0.16), transparent 48%), linear-gradient(135deg, #302F2C 10%, #868580 52%, #EFEDE3 92%)",
+          position: "relative",
+          overflow: "hidden",
+          background: "var(--bgt-secondary)",
         }}
-      />
+      >
+        <div
+          style={{
+            position: "absolute",
+            width: "150%",
+            height: "150%",
+            top: "-25%",
+            left: "-25%",
+            background: "linear-gradient(135deg, transparent 20%, var(--text-primary) 40%, var(--text-primary) 60%, transparent 80%)",
+            opacity: 0.08,
+            filter: "blur(30px)",
+            transform: "rotate(-15deg)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(to bottom, transparent 0%, var(--bgt-secondary) 100%)",
+          }}
+        />
+      </div>
+    ),
+  },
+  {
+    label: "02",
+    title: "Color Palette Lab",
+    desc: "Generate harmonious palettes from color theory. Complementary, triadic, analogous, and more with CSS export.",
+    href: "/palette",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+        }}
+      >
+        {["#6366f1", "#a855f7", "#ec4899", "#f43f5e", "#f97316"].map((c) => (
+          <div key={c} style={{ flex: 1, background: c, opacity: 0.7, transition: "opacity 0.3s" }} />
+        ))}
+      </div>
+    ),
+  },
+  // ── Texture & Pattern ──────────────────────────────
+  {
+    label: "03",
+    title: "Noise Texture Lab",
+    desc: "Procedural noise generation with Perlin, Value, and Worley algorithms. fBm layering with PNG export.",
+    href: "/noise",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          background: "var(--bgt-secondary)",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+            opacity: 0.12,
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "radial-gradient(circle at 60% 40%, var(--text-primary) 0%, transparent 60%)",
+            opacity: 0.06,
+          }}
+        />
+      </div>
+    ),
+  },
+  {
+    label: "04",
+    title: "Dither Studio",
+    desc: "1-bit ordered dithering aesthetic using 4x4 and 8x8 Bayer matrices linked to CSS themes.",
+    href: "/dither",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          background: "var(--bgt-secondary)",
+          imageRendering: "pixelated",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: "-20%",
+            opacity: 0.15,
+            backgroundSize: "8px 8px",
+            backgroundImage: "radial-gradient(var(--text-primary) 3px, transparent 0), radial-gradient(var(--text-primary) 3px, transparent 0)",
+            backgroundPosition: "0 0, 4px 4px",
+            filter: "contrast(200%) grayscale(100%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to right, var(--bgt-secondary) 10%, transparent 50%, var(--bgt-secondary) 90%)",
+          }}
+        />
+      </div>
+    ),
+  },
+  {
+    label: "05",
+    title: "Grid Pattern Studio",
+    desc: "Generate repeating SVG-based patterns — dots, lines, crosses, diagonals, isometric — as pure CSS backgrounds.",
+    href: "/patterns",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          background: "var(--bgt-secondary)",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "radial-gradient(var(--text-primary) 1px, transparent 0)",
+            backgroundSize: "16px 16px",
+            opacity: 0.15,
+          }}
+        />
+      </div>
+    ),
+  },
+  // ── CSS Properties ─────────────────────────────────
+  {
+    label: "06",
+    title: "Box Shadow Architect",
+    desc: "Design multi-layered CSS box shadows visually. 10 curated presets with per-layer control.",
+    href: "/shadows",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "var(--bgt-secondary)",
+        }}
+      >
+        <div
+          style={{
+            width: "50%",
+            height: "50%",
+            borderRadius: "12px",
+            background: "var(--app-bg)",
+            boxShadow: "0 8px 30px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08)",
+          }}
+        />
+      </div>
+    ),
+  },
+  {
+    label: "07",
+    title: "Border Radius Guide",
+    desc: "Learn when to use which border-radius. Visual guide comparing 4px to pill with real UI context.",
+    href: "/radius",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "8px",
+          padding: "1.5rem",
+          background: "var(--bgt-secondary)",
+        }}
+      >
+        {[4, 12, 24, 999].map((r) => (
+          <div
+            key={r}
+            style={{
+              width: "28px",
+              height: "28px",
+              background: "var(--text-primary)",
+              opacity: 0.14,
+              borderRadius: `${r}px`,
+            }}
+          />
+        ))}
+      </div>
+    ),
+  },
+  {
+    label: "08",
+    title: "Typography Scale",
+    desc: "Generate modular type scales from classic ratios — Minor Third to Golden Ratio — with CSS custom properties.",
+    href: "/typescale",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "1rem 1.5rem",
+          gap: "0.2rem",
+          background: "var(--bgt-secondary)",
+        }}
+      >
+        {[32, 24, 18, 14, 11, 9].map((s) => (
+          <div
+            key={s}
+            style={{
+              height: `${Math.max(s * 0.3, 2)}px`,
+              width: `${Math.min(s * 3, 90)}%`,
+              background: "var(--text-primary)",
+              opacity: 0.12 + (s / 32) * 0.12,
+              borderRadius: "1px",
+            }}
+          />
+        ))}
+      </div>
+    ),
+  },
+  // ── Animation & Motion ─────────────────────────────
+  {
+    label: "09",
+    title: "SVG Motion Forge",
+    desc: "Design looping waveforms with controllable amplitude, frequency, stroke, and duration.",
+    href: "/svg",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          background: "var(--bgt-secondary)",
+        }}
+      >
+        <svg width="100%" height="100%" viewBox="0 0 200 100" fill="none" style={{ opacity: 0.4 }}>
+          <path d="M -20,50 Q 30,10 80,50 T 180,50" stroke="var(--text-primary)" strokeWidth="1" />
+          <path d="M 20,50 Q 70,90 120,50 T 220,50" stroke="var(--text-primary)" strokeWidth="0.5" strokeDasharray="2 4" />
+          <circle cx="80" cy="50" r="3" fill="var(--text-primary)" />
+          <circle cx="120" cy="50" r="2" fill="var(--text-primary)" opacity="0.6" />
+        </svg>
+      </div>
+    ),
+  },
+  {
+    label: "10",
+    title: "Easing Curve Studio",
+    desc: "Design cubic-bezier easing curves by dragging control points. 10 presets with live animation previews.",
+    href: "/easing",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "var(--bgt-secondary)",
+        }}
+      >
+        <svg viewBox="0 0 100 100" width="60%" height="60%" fill="none">
+          <path
+            d="M 10 90 C 50 90, 20 10, 90 10"
+            stroke="var(--text-primary)"
+            strokeWidth="2.5"
+            opacity="0.2"
+          />
+          <circle cx="10" cy="90" r="3" fill="var(--text-primary)" opacity="0.15" />
+          <circle cx="90" cy="10" r="3" fill="var(--text-primary)" opacity="0.15" />
+        </svg>
+      </div>
+    ),
+  },
+  {
+    label: "11",
+    title: "Spring Physics Lab",
+    desc: "Generate bouncy, natural physics animations. Tuning mass, stiffness, and damping outputs pure CSS keyframes.",
+    href: "/spring",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "var(--bgt-secondary)",
+        }}
+      >
+        <div
+          style={{
+            width: "36px",
+            height: "36px",
+            borderRadius: "8px",
+            background: "var(--text-primary)",
+            opacity: 0.12,
+            transform: "scale(1.2)",
+          }}
+        />
+        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 100 100" fill="none">
+          <path d="M 0 50 Q 20 10, 40 60 T 70 45 T 90 50 T 100 50" stroke="var(--text-primary)" strokeWidth="1.5" opacity="0.3" strokeLinecap="round" />
+        </svg>
+      </div>
+    ),
+  },
+  // ── Visual Effects ─────────────────────────────────
+  {
+    label: "12",
+    title: "ASCII Art Studio",
+    desc: "Convert images to ASCII art with 6 character sets, adjustable contrast, color mode, and instant export.",
+    href: "/ascii",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "var(--bgt-secondary)",
+          fontFamily: "'Courier New', monospace",
+          fontSize: "0.5rem",
+          lineHeight: 1,
+          letterSpacing: "0.08em",
+          color: "var(--text-primary)",
+          opacity: 0.35,
+          whiteSpace: "pre",
+        }}
+      >
+        {`  ░▒▓█▓▒░  \n ░▒▓████▓▒░\n▒▓██    ██▓\n▒▓█  ●  █▓\n▒▓██    ██▓\n ░▒▓████▓▒░\n  ░▒▓█▓▒░  `}
+      </div>
+    ),
+  },
+  {
+    label: "13",
+    title: "Shader Studio",
+    desc: "WebGL silk shader with domain warping, fold simulation, and Phong lighting.",
+    href: "/shader",
+    thumb: (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          background: "var(--bgt-secondary)",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "radial-gradient(circle at 50% 120%, var(--text-primary) 0%, transparent 70%)",
+            opacity: 0.12,
+            filter: "blur(20px)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            opacity: 0.04,
+            mixBlendMode: "overlay",
+          }}
+        />
+      </div>
     ),
   },
 ];
@@ -102,7 +448,7 @@ export default function Page() {
           <p className="kicker">Modular Frontend Lab</p>
           <ThemeToggle />
         </div>
-        <h1>Shaders, motion, and gradient tools</h1>
+        <h1>Shaders, motion, and design tools</h1>
         <p className="lede">
           Visual tooling with one-click export for production-ready code.
         </p>
