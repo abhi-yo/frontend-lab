@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { CSSProperties, ReactNode, useState } from "react";
+import { CSSProperties, ReactNode, useState, useRef } from "react";
 import ThemeToggle from "../components/theme-toggle";
+import FullscreenButton from "../components/fullscreen-button";
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
@@ -26,6 +27,7 @@ function Control({ label, value, children }: { label: string; value: string | nu
 }
 
 export default function GradientPage() {
+  const previewRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
   const [angle, setAngle] = useState(135);
   const [colorA, setColorA] = useState("#302F2C");
@@ -85,11 +87,15 @@ export default function GradientPage() {
             <span>{angle}deg blend</span>
           </div>
           <div
+            ref={previewRef}
             className="preview gradient-preview"
             style={{
               background: `${gradientLayer2}, ${gradientLayer3}, ${gradientLayer1}`,
+              minHeight: "28rem",
             }}
-          />
+          >
+            <FullscreenButton targetRef={previewRef} />
+          </div>
         </div>
 
         <div className="controls">
