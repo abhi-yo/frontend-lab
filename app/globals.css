@@ -21,6 +21,7 @@
   --svg-preview-bg: #eae6d9;
   --overlay-bg: rgba(239, 237, 227, 0.82);
   --code-block-bg: rgba(255, 255, 255, 0.12);
+  --bgt-secondary: rgba(0, 0, 0, 0.03);
 
   --space-page: clamp(1.5rem, 5vw, 4rem);
   --space-section: 2.5rem;
@@ -44,6 +45,7 @@
   --svg-preview-bg: #2a2924;
   --overlay-bg: rgba(28, 27, 25, 0.85);
   --code-block-bg: rgba(255, 255, 255, 0.05);
+  --bgt-secondary: rgba(255, 255, 255, 0.04);
 }
 
 * {
@@ -692,6 +694,62 @@ h2 {
   border-radius: 999px;
 }
 
+/* ── Inline control bar used in playground pages ── */
+.inline-controls {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--bgt-secondary);
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.inline-control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inline-separator {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Radius guide card ── */
+.radius-guide-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.radius-guide-card.active {
+  border-width: 1.5px;
+  border-color: var(--text-primary);
+  background: var(--bgt-secondary);
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — Tablet (≤ 820px)
+   ───────────────────────────────────────────── */
 @media (max-width: 820px) {
   .tool-card {
     flex-direction: column;
@@ -706,7 +764,7 @@ h2 {
   }
 
   .controls {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .playground-header {
@@ -716,6 +774,7 @@ h2 {
 
   .export-btn {
     width: 100%;
+    text-align: center;
   }
 
   h1 {
@@ -725,5 +784,172 @@ h2 {
 
   .lede {
     white-space: normal;
+  }
+
+  .preview {
+    min-height: 16rem;
+  }
+
+  .gradient-preview {
+    min-height: 18rem;
+  }
+
+  .inline-controls {
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .inline-separator {
+    display: none;
+  }
+
+  .radius-guide-card {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — Mobile (≤ 640px)
+   ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  :root {
+    --space-section: 1.5rem;
+  }
+
+  .tool-card {
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .tool-card .card-title {
+    font-size: 1.1rem;
+  }
+
+  .tool-card .card-desc {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .tool-card .card-thumb {
+    min-height: 9rem;
+  }
+
+  .lab-grid {
+    gap: 1.25rem;
+  }
+
+  .playground-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .playground-desc {
+    font-size: 0.82rem;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .preview {
+    min-height: 12rem;
+  }
+
+  .gradient-preview {
+    min-height: 14rem;
+  }
+
+  .preset-row {
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .preset-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.65rem;
+  }
+
+  .code-block {
+    padding: 0.6rem;
+    font-size: 0.62rem;
+    min-height: 4rem;
+    max-height: 10rem;
+  }
+
+  .code-head {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.6rem;
+  }
+
+  .preview-meta {
+    font-size: 0.6rem;
+  }
+
+  .inline-controls {
+    gap: 0.5rem;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.65rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inline-control-group {
+    justify-content: space-between;
+    min-height: 2rem;
+  }
+
+  .inline-separator {
+    display: none;
+  }
+
+  .nav-row {
+    margin-bottom: 1rem;
+  }
+
+  .export-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.68rem;
+  }
+
+  .radius-guide-card {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — Small Mobile (≤ 480px)
+   ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(1.5rem, 8vw, 2.2rem);
+  }
+
+  .playground-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .playground-desc {
+    font-size: 0.78rem;
+  }
+
+  .tool-card .card-title {
+    font-size: 1rem;
+  }
+
+  .tool-card .card-desc {
+    font-size: 0.75rem;
+  }
+
+  .tool-card .card-thumb {
+    min-height: 7rem;
+  }
+
+  .preview {
+    min-height: 10rem;
   }
 }
