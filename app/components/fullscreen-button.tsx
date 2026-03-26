@@ -38,7 +38,7 @@ export default function FullscreenButton({ targetRef }: { targetRef: RefObject<H
         bottom: "1rem",
         right: "1rem",
         zIndex: 50,
-        background: "var(--bgt-secondary)",
+        background: "var(--surface)",
         border: "1px solid var(--border)",
         color: "var(--text-primary)",
         padding: "0.5rem",
@@ -52,11 +52,11 @@ export default function FullscreenButton({ targetRef }: { targetRef: RefObject<H
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.opacity = "1";
-        e.currentTarget.style.background = "var(--border)";
+        e.currentTarget.style.background = "var(--surface-hover)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.opacity = "0.7";
-        e.currentTarget.style.background = "var(--bgt-secondary)";
+        e.currentTarget.style.background = "var(--surface)";
       }}
       title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
     >
