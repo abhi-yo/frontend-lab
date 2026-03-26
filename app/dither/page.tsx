@@ -367,24 +367,8 @@ function applyDither(canvas, sourceImage) {
         </div>
 
         {/* Controls */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1.5rem",
-            alignItems: "center",
-            flexWrap: "wrap",
-            padding: "0.75rem 1rem",
-            borderRadius: "0.5rem",
-            border: "1px solid var(--border)",
-            background: "var(--bgt-secondary)",
-            marginBottom: "1rem",
-            fontSize: "0.75rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.04em",
-            color: "var(--text-secondary)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div className="inline-controls">
+          <div className="inline-control-group">
             <span>Pixel Scale</span>
             <input
               type="range"
@@ -396,9 +380,9 @@ function applyDither(canvas, sourceImage) {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "1.5rem" }}>{scale}×</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Brightness</span>
             <input
               type="range"
@@ -410,9 +394,9 @@ function applyDither(canvas, sourceImage) {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "1.5rem" }}>{brightness.toFixed(1)}</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Contrast</span>
             <input
               type="range"
@@ -436,7 +420,7 @@ function applyDither(canvas, sourceImage) {
             className="preview"
             style={{
               padding: 0,
-              minHeight: "28rem",
+              minHeight: "clamp(16rem, 50vw, 28rem)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

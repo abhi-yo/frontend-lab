@@ -1011,7 +1011,7 @@ export default function SvgPage() {
           </div>
 
           {/* Divider */}
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
           {/* Stroke Width */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
@@ -1029,7 +1029,7 @@ export default function SvgPage() {
           </div>
 
           {/* Divider */}
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
           {/* Opacity */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
@@ -1052,7 +1052,7 @@ export default function SvgPage() {
             <span className="preview-badge">Live Interactive View</span>
             <span>React + GSAP Pointer Tracking</span>
           </div>
-          <div ref={previewRef} className="preview svg-preview" style={{ padding: 0, minHeight: "28rem", color: controls.color === "currentColor" ? "var(--text-primary)" : undefined }}>
+          <div ref={previewRef} className="preview svg-preview" style={{ padding: 0, minHeight: "clamp(16rem, 50vw, 28rem)", color: controls.color === "currentColor" ? "var(--text-primary)" : undefined }}>
             <div style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
               <CurrentComponent controls={controls} />
             </div>

@@ -181,24 +181,8 @@ export default function EasingPage() {
         </div>
 
         {/* Controls */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1.5rem",
-            alignItems: "center",
-            flexWrap: "wrap",
-            padding: "0.75rem 1rem",
-            borderRadius: "0.5rem",
-            border: "1px solid var(--border)",
-            background: "var(--bgt-secondary)",
-            marginBottom: "1rem",
-            fontSize: "0.75rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.04em",
-            color: "var(--text-secondary)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div className="inline-controls">
+          <div className="inline-control-group">
             <span>Duration</span>
             <input type="range" min="100" max="2000" step="50" value={duration}
               onChange={(e) => setDuration(Number(e.target.value))}
@@ -206,13 +190,13 @@ export default function EasingPage() {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "3rem" }}>{duration}ms</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
           <span style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: "0.7rem", color: "var(--text-primary)" }}>
             {cubicStr}
           </span>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
           <button
             onClick={replay}
@@ -255,12 +239,13 @@ export default function EasingPage() {
             <svg
               ref={svgRef}
               viewBox={`0 0 ${W} ${H}`}
-              width={W}
-              height={H}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerLeave={handlePointerUp}
               style={{
+                width: "100%",
+                maxWidth: `${W}px`,
+                aspectRatio: "1 / 1",
                 background: "var(--bgt-secondary)",
                 borderRadius: "0.75rem",
                 border: "1px solid var(--border)",

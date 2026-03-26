@@ -121,24 +121,8 @@ export default function TypeScalePage() {
         </div>
 
         {/* Controls */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1.5rem",
-            alignItems: "center",
-            flexWrap: "wrap",
-            padding: "0.75rem 1rem",
-            borderRadius: "0.5rem",
-            border: "1px solid var(--border)",
-            background: "var(--bgt-secondary)",
-            marginBottom: "1rem",
-            fontSize: "0.75rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.04em",
-            color: "var(--text-secondary)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div className="inline-controls">
+          <div className="inline-control-group">
             <span>Base</span>
             <input type="range" min="10" max="24" step="1" value={baseSize}
               onChange={(e) => setBaseSize(Number(e.target.value))}
@@ -146,9 +130,9 @@ export default function TypeScalePage() {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "2rem" }}>{baseSize}px</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Height</span>
             <input type="range" min="1" max="2" step="0.05" value={lineHeight}
               onChange={(e) => setLineHeight(Number(e.target.value))}
@@ -156,9 +140,9 @@ export default function TypeScalePage() {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "1.5rem" }}>{lineHeight.toFixed(2)}</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Tracking</span>
             <input type="range" min="-0.05" max="0.15" step="0.005" value={letterSpacing}
               onChange={(e) => setLetterSpacing(Number(e.target.value))}
@@ -166,9 +150,9 @@ export default function TypeScalePage() {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "2.5rem" }}>{letterSpacing.toFixed(3)}em</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Weight</span>
             {[300, 400, 500, 600, 700].map((w) => (
               <button key={w} onClick={() => setFontWeight(w)}
@@ -182,9 +166,9 @@ export default function TypeScalePage() {
             ))}
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Font</span>
             <select
               value={fontStack}

@@ -302,24 +302,8 @@ function generateNoise(canvas, width = ${resolution}, height = ${resolution}) {
         </div>
 
         {/* Controls */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1.5rem",
-            alignItems: "center",
-            flexWrap: "wrap",
-            padding: "0.75rem 1rem",
-            borderRadius: "0.5rem",
-            border: "1px solid var(--border)",
-            background: "var(--bgt-secondary)",
-            marginBottom: "1rem",
-            fontSize: "0.75rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.04em",
-            color: "var(--text-secondary)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div className="inline-controls">
+          <div className="inline-control-group">
             <span>Scale</span>
             <input type="range" min="5" max="200" step="1" value={noiseScale}
               onChange={(e) => setNoiseScale(Number(e.target.value))}
@@ -327,9 +311,9 @@ function generateNoise(canvas, width = ${resolution}, height = ${resolution}) {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "2rem" }}>{noiseScale}</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Octaves</span>
             <input type="range" min="1" max="8" step="1" value={octaves}
               onChange={(e) => setOctaves(Number(e.target.value))}
@@ -337,9 +321,9 @@ function generateNoise(canvas, width = ${resolution}, height = ${resolution}) {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "1rem" }}>{octaves}</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Lacunarity</span>
             <input type="range" min="1" max="4" step="0.1" value={lacunarity}
               onChange={(e) => setLacunarity(Number(e.target.value))}
@@ -347,9 +331,9 @@ function generateNoise(canvas, width = ${resolution}, height = ${resolution}) {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "1.5rem" }}>{lacunarity.toFixed(1)}</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Gain</span>
             <input type="range" min="0.1" max="1" step="0.05" value={persistence}
               onChange={(e) => setPersistence(Number(e.target.value))}
@@ -357,22 +341,22 @@ function generateNoise(canvas, width = ${resolution}, height = ${resolution}) {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "1.5rem" }}>{persistence.toFixed(2)}</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Dark</span>
             <input type="color" value={colorA} onChange={(e) => setColorA(e.target.value)}
               style={{ width: "24px", height: "24px", border: "1px solid var(--border)", borderRadius: "4px", cursor: "pointer", padding: 0 }} />
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Light</span>
             <input type="color" value={colorB} onChange={(e) => setColorB(e.target.value)}
               style={{ width: "24px", height: "24px", border: "1px solid var(--border)", borderRadius: "4px", cursor: "pointer", padding: 0 }} />
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Res</span>
             {[256, 512, 1024].map((r) => (
               <button key={r} onClick={() => setResolution(r)}
@@ -396,7 +380,7 @@ function generateNoise(canvas, width = ${resolution}, height = ${resolution}) {
           <div
             ref={previewRef}
             className="preview"
-            style={{ padding: 0, minHeight: "28rem", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bgt-secondary)" }}
+            style={{ padding: 0, minHeight: "clamp(16rem, 50vw, 28rem)", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bgt-secondary)" }}
           >
             <canvas
               ref={canvasRef}

@@ -221,24 +221,8 @@ export default function PalettePage() {
         </div>
 
         {/* Base color picker */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1.5rem",
-            alignItems: "center",
-            flexWrap: "wrap",
-            padding: "0.75rem 1rem",
-            borderRadius: "0.5rem",
-            border: "1px solid var(--border)",
-            background: "var(--bgt-secondary)",
-            marginBottom: "1rem",
-            fontSize: "0.75rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.04em",
-            color: "var(--text-secondary)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div className="inline-controls">
+          <div className="inline-control-group">
             <span>Base Color</span>
             <input
               type="color"
@@ -248,21 +232,21 @@ export default function PalettePage() {
             />
             <span style={{ fontFamily: "var(--font-geist-mono), monospace" }}>{baseColor.toUpperCase()}</span>
           </div>
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-separator" />
+          <div className="inline-control-group">
             <span>H</span>
             <span style={{ fontFamily: "var(--font-geist-mono), monospace" }}>{Math.round(h)}°</span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>S</span>
             <span style={{ fontFamily: "var(--font-geist-mono), monospace" }}>{Math.round(s)}%</span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>L</span>
             <span style={{ fontFamily: "var(--font-geist-mono), monospace" }}>{Math.round(l)}%</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
           {/* Quick presets */}
           {["#6366f1", "#f43f5e", "#10b981", "#f59e0b", "#8b5cf6", "#06b6d4", "#ec4899"].map((c) => (

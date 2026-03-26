@@ -136,24 +136,8 @@ export default function PatternPage() {
         </div>
 
         {/* Controls */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1.5rem",
-            alignItems: "center",
-            flexWrap: "wrap",
-            padding: "0.75rem 1rem",
-            borderRadius: "0.5rem",
-            border: "1px solid var(--border)",
-            background: "var(--bgt-secondary)",
-            marginBottom: "1rem",
-            fontSize: "0.75rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.04em",
-            color: "var(--text-secondary)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div className="inline-controls">
+          <div className="inline-control-group">
             <span>Spacing</span>
             <input type="range" min="8" max="80" step="1" value={spacing}
               onChange={(e) => setSpacing(Number(e.target.value))}
@@ -161,9 +145,9 @@ export default function PatternPage() {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "2rem" }}>{spacing}px</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Size</span>
             <input type="range" min="0.5" max="8" step="0.5" value={size}
               onChange={(e) => setSize(Number(e.target.value))}
@@ -171,9 +155,9 @@ export default function PatternPage() {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "1.5rem" }}>{size}</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Stroke</span>
             <input type="range" min="0.5" max="4" step="0.5" value={strokeWidth}
               onChange={(e) => setStrokeWidth(Number(e.target.value))}
@@ -181,9 +165,9 @@ export default function PatternPage() {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "1.5rem" }}>{strokeWidth}</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Opacity</span>
             <input type="range" min="0.05" max="1" step="0.05" value={opacity}
               onChange={(e) => setOpacity(Number(e.target.value))}
@@ -191,9 +175,9 @@ export default function PatternPage() {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "2rem" }}>{opacity.toFixed(2)}</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Rotate</span>
             <input type="range" min="0" max="90" step="5" value={rotation}
               onChange={(e) => setRotation(Number(e.target.value))}
@@ -201,14 +185,14 @@ export default function PatternPage() {
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "2rem" }}>{rotation}°</span>
           </div>
 
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Dot</span>
             <input type="color" value={color} onChange={(e) => setColor(e.target.value)}
               style={{ width: "24px", height: "24px", border: "1px solid var(--border)", borderRadius: "4px", cursor: "pointer", padding: 0 }} />
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>BG</span>
             <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)}
               style={{ width: "24px", height: "24px", border: "1px solid var(--border)", borderRadius: "4px", cursor: "pointer", padding: 0 }} />
@@ -226,7 +210,7 @@ export default function PatternPage() {
             className="preview"
             style={{
               padding: 0,
-              minHeight: "28rem",
+              minHeight: "clamp(16rem, 50vw, 28rem)",
               backgroundColor: bgColor,
               backgroundImage: encodedSVG,
               backgroundRepeat: "repeat",

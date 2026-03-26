@@ -239,42 +239,26 @@ export default function ShadowPage() {
         </div>
 
         {/* Global controls */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1.5rem",
-            alignItems: "center",
-            flexWrap: "wrap",
-            padding: "0.75rem 1rem",
-            borderRadius: "0.5rem",
-            border: "1px solid var(--border)",
-            background: "var(--bgt-secondary)",
-            marginBottom: "1rem",
-            fontSize: "0.75rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.04em",
-            color: "var(--text-secondary)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div className="inline-controls">
+          <div className="inline-control-group">
             <span>Card</span>
             <input type="color" value={cardBg} onChange={(e) => setCardBg(e.target.value)}
               style={{ width: "24px", height: "24px", border: "1px solid var(--border)", borderRadius: "4px", cursor: "pointer", padding: 0 }} />
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-control-group">
             <span>Page</span>
             <input type="color" value={pageBg} onChange={(e) => setPageBg(e.target.value)}
               style={{ width: "24px", height: "24px", border: "1px solid var(--border)", borderRadius: "4px", cursor: "pointer", padding: 0 }} />
           </div>
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div className="inline-separator" />
+          <div className="inline-control-group">
             <span>Radius</span>
             <input type="range" min="0" max="48" step="1" value={cardRadius}
               onChange={(e) => setCardRadius(Number(e.target.value))}
               style={{ width: "70px", accentColor: "var(--text-primary)" }} />
             <span style={{ fontFamily: "var(--font-geist-mono), monospace", minWidth: "2rem" }}>{cardRadius}px</span>
           </div>
-          <div style={{ width: "1px", height: "20px", background: "var(--border)" }} />
+          <div className="inline-separator" />
           <button
             onClick={addLayer}
             style={{
