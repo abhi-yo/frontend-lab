@@ -136,20 +136,9 @@ export default function RadiusPage() {
               <button
                 key={item.value}
                 onClick={() => setActiveRadius(item.value)}
+                className={`radius-guide-card${isActive ? " active" : ""}`}
                 style={{
-                  display: "grid",
                   gridTemplateColumns: `${current.w + 48}px 1fr`,
-                  gap: "1.5rem",
-                  alignItems: "center",
-                  padding: "1.25rem 1.5rem",
-                  borderRadius: "0.75rem",
-                  border: isActive ? "1.5px solid var(--text-primary)" : "1px solid var(--border)",
-                  background: isActive ? "var(--bgt-secondary)" : "transparent",
-                  cursor: "pointer",
-                  textAlign: "left",
-                  color: "var(--text-primary)",
-                  transition: "all 0.2s ease",
-                  width: "100%",
                 }}
               >
                 {/* Shape preview */}
