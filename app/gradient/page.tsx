@@ -30,9 +30,9 @@ export default function GradientPage() {
   const previewRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
   const [angle, setAngle] = useState(135);
-  const [colorA, setColorA] = useState("#302F2C");
-  const [colorB, setColorB] = useState("#868580");
-  const [colorC, setColorC] = useState("#EFEDE3");
+  const [colorA, setColorA] = useState("#f43f5e");
+  const [colorB, setColorB] = useState("#8b5cf6");
+  const [colorC, setColorC] = useState("#3b82f6");
   const [stopA, setStopA] = useState(10);
   const [stopB, setStopB] = useState(52);
   const [stopC, setStopC] = useState(92);
@@ -42,7 +42,7 @@ export default function GradientPage() {
 
   const gradientLayer1 = `linear-gradient(${angle}deg, ${colorA} ${stopA}%, ${colorB} ${normalizedB}%, ${colorC} ${normalizedC}%)`;
   const gradientLayer2 = "radial-gradient(circle at 10% 20%, rgba(255,255,255,0.34), transparent 42%)";
-  const gradientLayer3 = "radial-gradient(circle at 80% 78%, rgba(0,0,0,0.16), transparent 48%)";
+  const gradientLayer3 = "radial-gradient(circle at 80% 78%, rgba(255,255,255,0.15), transparent 48%)";
 
   const gradientCode = `.surface-gradient {\n  background: ${gradientLayer2},\n              ${gradientLayer3},\n              ${gradientLayer1};\n}`;
 
@@ -91,7 +91,7 @@ export default function GradientPage() {
             className="preview gradient-preview"
             style={{
               background: `${gradientLayer2}, ${gradientLayer3}, ${gradientLayer1}`,
-              minHeight: "28rem",
+              minHeight: "clamp(16rem, 50vw, 28rem)",
             }}
           >
             <FullscreenButton targetRef={previewRef} />
